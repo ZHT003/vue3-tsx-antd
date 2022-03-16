@@ -1,0 +1,17 @@
+# 配置.editorconfig 文件主要是为了在多人开发的时候，统一代码风格
+root = true
+
+[*]
+# Unix-style newlines with a newline ending every file
+end_of_line = lf
+insert_final_newline = true
+# set default charset
+charset = utf-8
+# set 2 space indentation
+indent_style = space
+indent_size = 2
+# set not space end
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
