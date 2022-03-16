@@ -8,14 +8,16 @@ import {
 } from '@ant-design/icons-vue';
 import styles from './index.module.less'
 import { Layout, LayoutSider, LayoutContent, LayoutHeader } from "ant-design-vue";
+import sider from "./sider";
 
 const layout = () => {
   const selectedKeys = ref<string[]>(['1'])
   const collapsed = ref<boolean>(false)
   return () => {
     return (
-      <Layout class={styles['layout']}>
-        <LayoutSider v-model={[collapsed.value,'collapsed']} class={styles['layout-sider']} trigger={null} collapsible>
+      <a-layout class={styles['layout']}>
+        <sider collapsed={collapsed.value} />
+        {/* <a-layout-sider v-model={[collapsed.value,'collapsed']} class={styles['layout-sider']} trigger={null} collapsible>
           <div class={styles['logo']} />
           <a-menu v-model={[selectedKeys.value, 'selectedKeys']} theme="dark" mode="inline">
             <a-menu-item key="1">
@@ -36,23 +38,23 @@ const layout = () => {
               <a-menu-item key="">Alex</a-menu-item>
             </a-sub-menu>
           </a-menu>
-        </LayoutSider>
+        </a-layout-sider> */}
         <a-layout class={styles['layout-container']}>
-        <LayoutHeader class={styles['layout-header']}>
+        <a-layout-header class={styles['layout-header']}>
           {collapsed.value ? <menu-unfold-outlined
             class={styles['trigger']}
             onClick={() => (collapsed.value = !collapsed.value)}
           /> : <menu-fold-outlined class={styles['trigger']} onClick={() => (collapsed.value = !collapsed.value)} />
           }
           
-          </LayoutHeader>
-          <LayoutContent
+          </a-layout-header>
+          <a-layout-content
             class={styles['layout-content']}
           >
             <a-button type="primary">Primary Button</a-button>
-          </LayoutContent>
+          </a-layout-content>
       </a-layout>
-    </Layout>
+    </a-layout>
     )
   }
 }
@@ -65,6 +67,7 @@ export default defineComponent({
     UploadOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined,
+    sider,
   },
   setup: layout
 })
